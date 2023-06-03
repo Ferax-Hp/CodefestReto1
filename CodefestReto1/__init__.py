@@ -31,16 +31,14 @@ def detect_objects_in_video(video_path, output_path):
     data = cv2.VideoCapture(video_path)
     frames = data.get(cv2.CAP_PROP_FRAME_COUNT)
     fps = int(data.get(cv2.CAP_PROP_FPS))
-    second = frames / fps
+    second = fps/60
 
     count = 0
-    video_time = second
+    video_time = second # Inicializamos el tiempo en 1 frame/segundo
 
     while True:
         ret, image = data.read()
-        # original = image.copy()
 
-        # Resize the raw image into (224-height,224-width) pixels
         image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
 
         image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
