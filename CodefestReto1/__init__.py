@@ -11,9 +11,11 @@ def detect_objects_in_video(video_path, output_path):
     datos = ["", "", "", "", ""]
 
     anterior = ""
-    with open(output_path + '/datos.csv', 'a', newline='') as csv_file:
+    print("Cargando archivos...", end="")
+    with open(output_path, 'a', newline='') as csv_file:
         csv_writer = writer(csv_file)
         csv_writer.writerow(columns)
+
 
     # Disable scientific notation for clarity
     np.set_printoptions(suppress=True)
@@ -24,6 +26,7 @@ def detect_objects_in_video(video_path, output_path):
     # Load the labels
     class_names = open(labels_txt, "r").readlines()
 
+    print("\rLeyendo el video.......")
     # CAMERA can be 0 or 1 based on default camera of your computer
     data = cv2.VideoCapture(video_path)
     frames = data.get(cv2.CAP_PROP_FRAME_COUNT)
@@ -57,7 +60,7 @@ def detect_objects_in_video(video_path, output_path):
             datos = [str(index), class_name[2:].replace("\n", ""), str(Horas) + ":" + str(Minutos) + ":" + str(second),
                      "xxxxx"]
             if anterior != class_name[2:]:
-                with open(output_path+'datos.csv', 'a', newline='') as csv_file:
+                with open(output_path, 'a', newline='') as csv_file:
                     csv_writer = writer(csv_file)
                     csv_writer.writerow(datos)
 
