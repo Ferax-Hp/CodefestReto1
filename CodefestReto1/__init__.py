@@ -10,7 +10,7 @@ def detect_objects_in_video(video_path, output_path):
     columns = ["ID", "Objetc Type", "Time", "Coordinates"]
     datos = ["", "", "", "", ""]
 
-    anterior = ""
+    anterior = 0
     print("Cargando archivos...", end="")
     with open(output_path, 'a', newline='') as csv_file:
         csv_writer = writer(csv_file)
@@ -59,12 +59,12 @@ def detect_objects_in_video(video_path, output_path):
             Minutos = int(video_time / 60)
             datos = [str(index), class_name[2:].replace("\n", ""), str(Horas) + ":" + str(Minutos) + ":" + str(second),
                      "xxxxx"]
-            if anterior != class_name[2:]:
+            if anterior != index:
                 with open(output_path, 'a', newline='') as csv_file:
                     csv_writer = writer(csv_file)
                     csv_writer.writerow(datos)
 
-        anterior = class_name[2:]
+        anterior = index
 
         keyboard_input = cv2.waitKey(1)
         count += 1
