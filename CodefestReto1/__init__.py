@@ -1,3 +1,5 @@
+import os
+
 from keras.models import load_model
 import cv2
 import numpy as np
@@ -7,11 +9,18 @@ keras_model_h5 = "CodefestReto1/keras_model.h5"
 labels_txt = "CodefestReto1/labels.txt"
 
 def detect_objects_in_video(video_path, output_path):
+
+    print("Cargando archivos...", end="")
+
+    try:
+        os.remove(output_path)
+    except:
+        pass
+
     columns = ["ID", "Objetc Type", "Time", "Coordinates"]
     datos = ["", "", "", "", ""]
 
     anterior = 0
-    print("Cargando archivos...", end="")
     with open(output_path, 'a', newline='') as csv_file:
         csv_writer = writer(csv_file)
         csv_writer.writerow(columns)
