@@ -34,4 +34,4 @@ Para el entrenamiento y desarrollo de esta libreria se llevaron acábo los sigui
 5. A travez de OpenCV leermos el video, y lo separamos en frames.
 6. Donde cada frame es analizado y clasificado.
 
-**Nota: **Esposible mejorar la clasificacion de los objetos, simplemente actualizando el archivo [*.h5]()
+**Nota:** Esposible mejorar la clasificacion de los objetos, simplemente actualizando el archivo [*.h5]()
