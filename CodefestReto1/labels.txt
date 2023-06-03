@@ -1,0 +1,4 @@
+0 Estructura
+1 Nada
+2 Vehiculos
+3 Mineria
