@@ -4,10 +4,10 @@
 
 ### Prerrequisitos
 
-- keras
-- OpenCV
-- numpy
-- tensorflow
+- keras `pip install keras`
+- OpenCV `pip install opencv-python`
+- numpy `pip install numpy`
+- tensorflow `pip install tensorflow`
 
 ### ¡Rapido Inicio!
 
